@@ -1,0 +1,92 @@
+<main class="search-page">
+  <div class="search-box">
+    <button
+      class="back-button"
+      type="button"
+      aria-label="Go back"
+      (click)="goBack()"
+    >
+      <span class="back-chevron"></span>
+    </button>
+
+    <div class="input-wrapper">
+      <input
+        #searchInput
+        type="text"
+        aria-label="Search products"
+        [(ngModel)]="searchQuery"
+        (input)="updateSearch()"
+      />
+
+      <div
+        class="rolling-placeholder"
+        *ngIf="!searchQuery"
+        aria-hidden="true"
+      >
+        <span class="search-prefix">Search for</span>
+
+        <span class="rolling-text-wrapper">
+          <span
+            class="rolling-text"
+            [class.no-transition]="!enableSearchTransition"
+            [style.transform]="
+              'translateY(-' +
+              currentSuggestionIndex * 28 +
+              'px)'
+            "
+          >
+            <span *ngFor="let suggestion of rollingSuggestions">
+              "{{ suggestion }}"
+            </span>
+          </span>
+        </span>
+      </div>
+    </div>
+
+    <button
+      *ngIf="searchQuery"
+      class="clear-button"
+      type="button"
+      aria-label="Clear search"
+      (click)="clearSearch()"
+    >
+      &times;
+    </button>
+  </div>
+
+  <section class="past-searches" *ngIf="!searchQuery">
+    <h2>Your past searches</h2>
+
+    <div class="past-search-list">
+      <button
+        type="button"
+        *ngFor="let search of pastSearches"
+        (click)="usePastSearch(search)"
+      >
+        <span
+          class="past-search-icon"
+          aria-hidden="true"
+        ></span>
+
+        <span>{{ search }}</span>
+      </button>
+    </div>
+  </section>
+
+  <section class="results-section">
+    <h2>
+      {{
+        searchQuery
+          ? 'Results for "' + searchQuery + '"'
+          : 'All Products'
+      }}
+    </h2>
+
+    <app-product-list
+      [products]="filteredProducts"
+      [emptyMessage]="'No products found for ' + searchQuery"
+    >
+    </app-product-list>
+  </section>
+
+</main>

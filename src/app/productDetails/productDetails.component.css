@@ -1,0 +1,384 @@
+:host {
+  --details-width: 1000px;
+  --details-gutter: 10px;
+  --details-background: #f1f1f5;
+  display: block;
+  min-height: 100vh;
+  background: #fff;
+  color: #404146;
+}
+
+button {
+  font: inherit;
+}
+
+.details-page {
+  width: 100%;
+  height: 100vh;
+  background: #fff;
+}
+
+.details-shell {
+  width: min(100%, var(--details-width));
+  height: 100vh;
+  margin: 0 auto;
+  background: var(--details-background);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.details-header {
+  position: relative;
+  z-index: 20;
+  width: 100%;
+  height: 72px;
+  flex: 0 0 72px;
+  margin: 0;
+  border-radius: 0 0 18px 18px;
+  background: #fff;
+  overflow: hidden;
+}
+
+.header-content {
+  width: 100%;
+  height: 100%;
+  padding: 0 18px;
+  border-radius: 0 0 18px 18px;
+  background: #fff;
+  box-shadow: none;
+  display: grid;
+  grid-template-columns: 44px 1fr 44px;
+  align-items: center;
+  gap: 8px;
+}
+
+.header-content h1 {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 800;
+}
+
+.icon-button {
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+}
+
+.icon-button:hover {
+  background: #f3f3f4;
+}
+
+.icon-button .bi {
+  color: #55585c;
+  font-size: 23px;
+  line-height: 1;
+}
+
+.page-background {
+  width: 100%;
+  min-height: 0;
+  flex: 1;
+  margin: 0;
+  padding: 8px var(--details-gutter) 24px;
+  background: var(--details-background);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.page-background::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+.product-card,
+.highlights-card {
+  border-radius: 18px;
+  background: #fff;
+}
+
+.product-card {
+  padding: 34px 18px 0;
+}
+
+.gallery {
+  position: relative;
+  padding-bottom: 22px;
+  border-bottom: 1px solid #dedee1;
+}
+
+.offer-ribbon {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  min-width: 46px;
+  padding: 8px 6px 13px;
+  background: #08a36c;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 900;
+  line-height: 1.05;
+  text-align: center;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 84%, 0 100%);
+}
+
+.image-frame {
+  width: min(100%, 550.4px);
+  height: 550.4px;
+  margin: 0 auto;
+  border-radius: 13px;
+  background: #f7f7f7;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.image-frame img {
+  width: 86%;
+  height: 86%;
+  object-fit: contain;
+}
+
+.gallery-dots {
+  height: 12px;
+  margin-top: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.gallery-dots span {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #d7d7d9;
+}
+
+.gallery-dots .active {
+  width: 11px;
+  height: 11px;
+  background: #075df5;
+}
+
+.product-summary {
+  min-height: 205px;
+  padding: 27px 2px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.delivery-time {
+  margin: 0 0 18px;
+  color: #8a8c90;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.product-summary h2 {
+  margin: 0 0 12px;
+  font-size: 18px;
+}
+
+.description {
+  margin: 0 0 14px;
+  color: #61636a;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.pack-size {
+  margin: 0 0 11px;
+  color: #62646a;
+  font-size: 16px;
+}
+
+.price-row {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.price-row strong {
+  font-size: 17px;
+}
+
+.price-row del {
+  color: #a5a6a9;
+  font-size: 13px;
+}
+
+.option-button,
+.quantity-control {
+  width: 140px;
+  height: 48px;
+  flex: 0 0 140px;
+  border: 1px solid #d8d9dd;
+  border-radius: 10px;
+  background: #fff;
+  color: #075df5;
+  box-shadow: 0 3px 10px rgba(25, 26, 31, 0.08);
+  font-weight: 800;
+}
+
+.option-button {
+  cursor: pointer;
+}
+
+.quantity-control {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.quantity-control button {
+  border: 0;
+  background: transparent;
+  color: #075df5;
+  font-size: 21px;
+  cursor: pointer;
+}
+
+.highlights-card {
+  margin-top: 18px;
+  padding: 22px 20px 20px;
+}
+
+.highlights-card h2 {
+  margin: 0 0 17px;
+  font-size: 18px;
+}
+
+.highlights-table {
+  border: 1px solid #d7d8dc;
+  border-radius: 11px;
+  overflow: hidden;
+}
+
+.highlight-row {
+  min-height: 50px;
+  display: grid;
+  grid-template-columns: 40% 60%;
+}
+
+.highlight-row + .highlight-row {
+  border-top: 1px solid #d7d8dc;
+}
+
+.highlight-row strong,
+.highlight-row span {
+  padding: 14px 15px;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.highlight-row strong {
+  background: #f0f0f4;
+  color: #61636a;
+}
+
+.highlight-row span {
+  border-left: 1px solid #e3e3e6;
+}
+
+.not-found {
+  min-height: 100vh;
+  display: grid;
+  place-content: center;
+  text-align: center;
+}
+
+.not-found button {
+  padding: 11px 18px;
+  border: 0;
+  border-radius: 9px;
+  background: #159947;
+  color: #fff;
+  cursor: pointer;
+}
+
+@media (max-width: 600px) {
+  :host {
+    --details-gutter: 7px;
+  }
+
+  .details-header {
+    width: 100%;
+    height: 62px;
+    flex-basis: 62px;
+    margin-bottom: 0;
+    border-radius: 0 0 14px 14px;
+  }
+
+  .header-content {
+    padding: 0 8px;
+    border-radius: 0 0 14px 14px;
+  }
+
+  .header-content h1 {
+    font-size: 15px;
+  }
+
+  .page-background {
+    padding: 8px var(--details-gutter) var(--details-gutter);
+  }
+
+  .product-card {
+    padding: 20px 12px 0;
+    border-radius: 14px;
+  }
+
+  .offer-ribbon {
+    min-width: 42px;
+    font-size: 13px;
+  }
+
+  .image-frame {
+    width: 100%;
+    height: 72vw;
+    max-height: 390px;
+  }
+
+  .product-summary {
+    min-height: 190px;
+    padding: 22px 2px 26px;
+    align-items: flex-end;
+  }
+
+  .description {
+    max-width: 220px;
+  }
+
+  .option-button,
+  .quantity-control {
+    width: 105px;
+    flex-basis: 105px;
+  }
+
+  .highlights-card {
+    margin-top: 10px;
+    padding: 18px 12px 14px;
+    border-radius: 14px;
+  }
+
+  .highlight-row {
+    grid-template-columns: 42% 58%;
+  }
+
+  .highlight-row strong,
+  .highlight-row span {
+    padding: 12px 10px;
+    font-size: 12px;
+  }
+}

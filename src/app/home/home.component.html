@@ -1,0 +1,62 @@
+<header class="home-header">
+  <div class="brand-block">
+    <h1>FreshMart</h1>
+    <p>5 mins delivery to your location</p>
+  </div>
+
+  <button class="fake-search" type="button" (click)="goToSearch()">
+    <span class="search-prefix">Search for</span>
+
+    <span class="rolling-text-wrapper">
+      <span
+        class="rolling-text"
+        [class.no-transition]="!enableSearchTransition"
+        [style.transform]="
+          'translateY(-' + currentSuggestionIndex * 28 + 'px)'
+        "
+      >
+        <span *ngFor="let suggestion of rollingSuggestions">
+          "{{ suggestion }}"
+        </span>
+      </span>
+    </span>
+
+    <span class="search-icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24" focusable="false">
+        <circle cx="11" cy="11" r="6.5"></circle>
+        <path d="m16 16 4 4"></path>
+      </svg>
+    </span>
+  </button>
+</header>
+
+<main class="home-page">
+  <section class="home-section">
+    <h2>Shop by category</h2>
+
+    <div class="category-grid">
+      <button
+        class="category-item"
+        type="button"
+        *ngFor="let category of categories"
+        (click)="goToCategory(category.route)"
+      >
+        <div class="category-image-box">
+          <img [src]="category.image" [alt]="category.name" />
+        </div>
+
+        <span>{{ category.name }}</span>
+      </button>
+    </div>
+  </section>
+
+  <section class="home-section">
+    <h2>Today’s offers</h2>
+
+    <app-product-list
+      [products]="offeredProducts"
+      emptyMessage="No offers are currently available."
+    >
+    </app-product-list>
+  </section>
+</main>

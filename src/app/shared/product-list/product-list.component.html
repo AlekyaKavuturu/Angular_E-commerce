@@ -1,0 +1,30 @@
+<p class="empty-message" *ngIf="products.length === 0">
+  {{ emptyMessage }}
+</p>
+
+<div class="product-grid" *ngIf="products.length > 0">
+  <article
+    class="product-card"
+    *ngFor="let product of products; trackBy: trackByProductId"
+    (click)="goToProduct(product.id)"
+    (keydown.enter)="goToProduct(product.id)"
+    (keydown.space)="goToProduct(product.id)"
+    tabindex="0"
+    role="button"
+  >
+    <div class="product-image-box">
+      <img [src]="product.image" [alt]="product.name" />
+    </div>
+
+    <p class="offer">{{ product.offer }}</p>
+
+    <h3>{{ product.name }}</h3>
+
+    <p class="quantity">{{ product.quantity }}</p>
+
+    <div class="price-row">
+      <strong>₹{{ product.price }}</strong>
+      <span>₹{{ product.oldPrice }}</span>
+    </div>
+  </article>
+</div>

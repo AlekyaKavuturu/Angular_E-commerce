@@ -1,0 +1,16 @@
+:host {
+  display: block;
+  min-height: 100vh;
+  background: #f8f8f8;
+}
+
+.app-shell {
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.route-wrapper {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+}

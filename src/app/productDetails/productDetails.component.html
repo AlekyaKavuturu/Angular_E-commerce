@@ -1,0 +1,112 @@
+<main class="details-page" *ngIf="product; else productNotFound">
+  <div class="details-shell">
+    <header class="details-header">
+    <div class="header-content">
+      <button
+        class="icon-button back-button"
+        type="button"
+        aria-label="Go back"
+        (click)="goBack()"
+      >
+        <i class="bi bi-arrow-left" aria-hidden="true"></i>
+      </button>
+
+      <h1>{{ product.name }}</h1>
+
+      <button
+        class="icon-button share-button"
+        type="button"
+        aria-label="Share product"
+      >
+        <i class="bi bi-share" aria-hidden="true"></i>
+      </button>
+    </div>
+    </header>
+
+    <div class="page-background">
+      <section class="product-card">
+      <div class="gallery">
+        <span class="offer-ribbon">
+          {{ product.offer.split(' ')[0] }}<br />OFF
+        </span>
+
+        <div class="image-frame">
+          <img [src]="product.image" [alt]="product.name" />
+        </div>
+
+        <div class="gallery-dots" aria-hidden="true">
+          <span class="active"></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+
+      <div class="product-summary">
+        <div>
+          <p class="delivery-time">5 MINS</p>
+          <h2>{{ product.name }}</h2>
+          <p class="description">
+            Fresh, carefully selected and perfect for everyday meals
+          </p>
+          <p class="pack-size">{{ product.quantity }}</p>
+
+          <div class="price-row">
+            <strong>&#8377;{{ product.price }}</strong>
+            <del>&#8377;{{ product.oldPrice }}</del>
+          </div>
+        </div>
+
+        <button
+          *ngIf="quantity === 0"
+          class="option-button"
+          type="button"
+          (click)="addProduct()"
+        >
+          ADD
+        </button>
+
+        <div class="quantity-control" *ngIf="quantity > 0">
+          <button type="button" (click)="decreaseQuantity()">&#8722;</button>
+          <strong>{{ quantity }}</strong>
+          <button type="button" (click)="increaseQuantity()">+</button>
+        </div>
+      </div>
+      </section>
+
+      <section class="highlights-card">
+      <h2>Highlights</h2>
+
+      <div class="highlights-table">
+        <div class="highlight-row">
+          <strong>Health Benefits</strong>
+          <span>Fresh produce with natural nutrients and fibre</span>
+        </div>
+        <div class="highlight-row">
+          <strong>Box Contents</strong>
+          <span>1 x {{ product.name }} ({{ product.quantity }})</span>
+        </div>
+        <div class="highlight-row">
+          <strong>Pack Size</strong>
+          <span>{{ product.quantity }}</span>
+        </div>
+        <div class="highlight-row">
+          <strong>Category</strong>
+          <span>{{ product.category | titlecase }}</span>
+        </div>
+        <div class="highlight-row">
+          <strong>Storage Tip</strong>
+          <span>Keep dry and refrigerated for freshness</span>
+        </div>
+      </div>
+      </section>
+    </div>
+  </div>
+</main>
+
+<ng-template #productNotFound>
+  <section class="not-found">
+    <h1>Product not found</h1>
+    <button type="button" (click)="goHome()">Return home</button>
+  </section>
+</ng-template>
